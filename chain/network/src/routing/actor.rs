@@ -25,7 +25,7 @@ use tracing::warn;
 /// We use store for following reasons:
 ///   - store removed edges to disk
 ///   - we currently don't store active edges to disk
-pub struct Actor {
+pub(crate) struct Actor {
     clock: time::Clock,
     my_peer_id: PeerId,
     // Graph is locked for writes only by this Actor, and only to update a bunch of edges.

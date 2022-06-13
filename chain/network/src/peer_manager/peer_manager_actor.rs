@@ -119,11 +119,8 @@ struct ConnectedPeer {
 
 #[derive(Default)]
 struct AdvHelper {
-    #[cfg(feature = "test_features")]
     adv_disable_edge_propagation: bool,
-    #[cfg(feature = "test_features")]
     adv_disable_edge_signature_verification: bool,
-    #[cfg(feature = "test_features")]
     adv_disable_edge_pruning: bool,
 }
 
@@ -1877,7 +1874,6 @@ impl PeerManagerActor {
         }
     }
 
-    #[cfg(feature = "test_features")]
     #[perf]
     fn handle_msg_set_adv_options(&mut self, msg: crate::test_utils::SetAdvOptions) {
         if let Some(disable_edge_propagation) = msg.disable_edge_propagation {
@@ -2168,7 +2164,6 @@ impl PeerManagerActor {
                 self.handle_msg_ban(msg);
                 PeerManagerMessageResponse::Ban(())
             }
-            #[cfg(feature = "test_features")]
             PeerManagerMessageRequest::SetAdvOptions(msg) => {
                 self.handle_msg_set_adv_options(msg);
                 PeerManagerMessageResponse::SetAdvOptions(())
